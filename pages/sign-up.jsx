@@ -298,6 +298,9 @@ export default function login() {
         a:hover {
           text-decoration: underline;
         }
+        .link-style{
+          margin-left: .5rem;
+      }
       `}</style>
     </>
   );
