@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, Avatar, Typography} from "@mui/material"
-export default function EventLogo() {
+export default function EventLogo({backgroundColor, color, avatarColor, avatarBackgroundColor}) {
   return (
     <Box
    
@@ -15,15 +15,15 @@ export default function EventLogo() {
   >
     <Avatar
       sx={{
-        backgroundColor: {xs: "primary.main", sm: "white"} ,
-        color: {xs: "white", sm: "primary.main"} ,
+        backgroundColor: `${avatarBackgroundColor && avatarBackgroundColor}` ,
+        color: `${avatarColor && avatarColor}` ,
         fontWeight: "bold",
       }}
     >
       E
     </Avatar>
     <Typography
-      sx={{ fontSize: 30, fontWeight: "bold", color: {xs: "black", sm: "white" }}}
+      sx={{ fontSize: 30, fontWeight: "bold", color: `${color}`}}
     >
       Eventum
     </Typography>
