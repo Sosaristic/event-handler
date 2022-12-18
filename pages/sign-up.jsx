@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useForm, Controller} from "react-hook-form"
 import Head from "next/head";
 import Link from "next/link";
 import {
@@ -19,6 +20,15 @@ import { FcGoogle } from "react-icons/fc";
 import EventLogo from "../components/EventLogo";
 
 export default function login() {
+const {handleSubmit, control, formState: {errors}} = useForm({
+  defaultValues: {
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  }
+})
+const onSubmit = (data)=> console.log(data)
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -67,7 +77,7 @@ export default function login() {
             }}
           >
             <Box mt={3} ml={4} sx={{ width: "fit-content" }}>
-              <EventLogo />
+              <EventLogo color={"white"} avatarBackgroundColor="white" avatarColor={"primary.main"}/>
             </Box>
             <Typography
               variant="h4"
@@ -119,7 +129,7 @@ export default function login() {
                   transform: "translate(-50%, 0)",
                 }}
               >
-                <EventLogo />
+                <EventLogo avatarBackgroundColor={"primary.main"}/>
               </Box>
 
               <Box
@@ -142,7 +152,7 @@ export default function login() {
                   noValidate
                   autoComplete="off"
                   sx={{ position: "relative", color: "main.primary" }}
-                  onSubmit={handleFormSubmit}
+                  onSubmit={handleSubmit(onSubmit)}
                 >
                   <Box
                     mt={2}
@@ -153,64 +163,103 @@ export default function login() {
                       justifyContent: { sm: "space-between" },
                     }}
                   >
-                    <TextField
-                      required
+                    <Controller 
+                    name="firstName"
+                    control={control}
+                    rules={{required: "required"}}
+                    render= {({field})=>(
+                      <TextField
+                      type="text"
                       label="First Name"
                       variant="filled"
                       size="small"
                       name="firstName"
-                      value={values.fullName}
-                      onInput={handleInput}
+                     {...field}
                       sx={{ width: { xs: "100%", sm: "40%" } }}
+                      error = {Boolean(errors.firstName)}
+                      helperText={errors.firstName?.message}
                     />
-                    <TextField
-                      required
+                    )}
+                    
+                    />
+                  
+                  <Controller 
+                    name="lastName"
+                    control={control}
+                    rules={{required: "required"}}
+                    render= {({field})=>(
+                      <TextField
+                      type="text"
                       label="Last Name"
                       variant="filled"
                       size="small"
                       name="lastName"
-                      value={values.lastName}
-                      onInput={handleInput}
+                     {...field}
+                     error = {Boolean(errors.lastName)}
+                     helperText= {errors.lastName?.message}
                       sx={{ width: { xs: "100%", sm: "40%" } }}
+
                     />
+                    )}
+                    
+                    />
+                    
                   </Box>
 
-                  <TextField
+                  <Controller 
+                    name="email"
+                    control={control}
+                    rules={{ required: "required", pattern: {value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[\.]+[com || org]+$/i, message: "invalid email"} }}
+                    render= {({field})=>(
+                      <TextField
                     type="email"
-                    required
+                    
                     label="Email"
                     variant="filled"
                     size="small"
-                    name="email"
-                    value={values.email}
-                    onInput={handleInput}
+                   {...field}
+                   error={Boolean(errors.email)}
+                   helperText = {errors.email?.message}
                     sx={{ width: "100%", marginTop: 3 }}
                   />
-
-                  <TextField
-                    type={visibilty ? "text" : "password"}
-                    required
-                    label="Password"
-                    variant="filled"
-                    size="small"
+                    )}
+                    
+                    />
+                      
+                      <Controller 
                     name="password"
-                    value={values.password}
-                    onInput={handleInput}
-                    sx={{ width: "100%", marginTop: 3 }}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <IconButton onClick={handleClickShowPassword}>
-                            {visibilty ? (
-                              <VisibilityIcon />
-                            ) : (
-                              <VisibilityOffIcon />
-                            )}
-                          </IconButton>
-                        </InputAdornment>
-                      ),
-                    }}
-                  />
+                    control={control}
+                    rules={{required: "required"}}
+                    render= {({field})=>(
+                      <TextField
+                      type={visibilty ? "text" : "password"}
+                      
+                      label="Password"
+                      variant="filled"
+                      size="small"
+                     {...field}
+                     error={Boolean(errors.password)}
+                     helperText={errors.password?.message}
+                      sx={{ width: "100%", marginTop: 3 }}
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">
+                            <IconButton onClick={handleClickShowPassword}>
+                              {visibilty ? (
+                                <VisibilityIcon />
+                              ) : (
+                                <VisibilityOffIcon />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    )}
+                    
+                    />
+
+                 
 
                   <Button
                     type="submit"

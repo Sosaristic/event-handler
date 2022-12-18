@@ -33,12 +33,11 @@ export default function login() {
   });
 
   const onSubmit = (data) => console.log(data);
- 
+
   const [visibilty, setVisibilty] = useState(false);
-  
 
   const handleClickShowPassword = () => setVisibilty((show) => !show);
-  
+
   // copy right year
   const date = new Date();
   const year = date.getUTCFullYear();
@@ -65,7 +64,7 @@ export default function login() {
             }}
           >
             <Box mt={3} ml={4} sx={{ width: "fit-content" }}>
-              <EventLogo />
+              <EventLogo color={"white"} avatarBackgroundColor="white" avatarColor={"primary.main"}/>
             </Box>
             <Typography
               variant="h4"
@@ -117,7 +116,7 @@ export default function login() {
                   transform: "translate(-50%, 0)",
                 }}
               >
-                <EventLogo />
+                <EventLogo  avatarBackgroundColor="primary.main"/>
               </Box>
 
               <Box
@@ -145,7 +144,14 @@ export default function login() {
                   <Controller
                     name="email"
                     control={control}
-                    rules={{ required: "required", pattern: {value: /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[\.]+[com || org]+$/i, message: "invalid email"} }}
+                    rules={{
+                      required: "required",
+                      pattern: {
+                        value:
+                          /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[\.]+[com || org]+$/i,
+                        message: "invalid email",
+                      },
+                    }}
                     render={({ field }) => (
                       <TextField
                         type="email"
@@ -156,7 +162,6 @@ export default function login() {
                         error={Boolean(errors.email)}
                         helperText={errors.email?.message}
                         sx={{ width: "100%", marginTop: 3 }}
-                       
                       />
                     )}
                   />
@@ -167,7 +172,7 @@ export default function login() {
                     rules={{ required: "password is required" }}
                     render={({ field }) => (
                       <TextField
-                      type={visibilty ? "text" : "password"}
+                        type={visibilty ? "text" : "password"}
                         label=" Password"
                         variant="filled"
                         size="small"
@@ -176,23 +181,26 @@ export default function login() {
                         helperText={errors.password?.message}
                         sx={{ width: "100%", marginTop: 3 }}
                         InputProps={{
-                            endAdornment: (
-                              <InputAdornment position="end">
-                                <IconButton onClick={handleClickShowPassword}>
-                                  {visibilty ? (
-                                    <VisibilityIcon />
-                                  ) : (
-                                    <VisibilityOffIcon />
-                                  )}
-                                </IconButton>
-                              </InputAdornment>
-                            ),
-                          }}
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton onClick={handleClickShowPassword}>
+                                {visibilty ? (
+                                  <VisibilityIcon />
+                                ) : (
+                                  <VisibilityOffIcon />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
                       />
                     )}
                   />
-
-                 
+                  <Box mt={1}>
+                  <Link href="/password-reset" legacyBehavior >
+                    <a href="/password-reset" >forgot password?</a>
+                  </Link>
+                  </Box>
 
                   <Button
                     type="submit"
@@ -284,6 +292,7 @@ export default function login() {
         .link-style {
           margin-left: 0.5rem;
         }
+      
       `}</style>
     </>
   );
