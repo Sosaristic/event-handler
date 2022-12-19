@@ -1,11 +1,16 @@
-import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import React from "react";
+import { useRouter } from "next/router";
+import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import Link from "next/link";
 import { useSideBar } from "../context/menuContext";
 export default function MenuDropDown() {
+  const router = useRouter()
     const {toogleSideBar} = useSideBar()
+    const handleHomeRoute = ()=>{
+      router.push("/")
+      toogleSideBar()
+    }
   return (
     <Box sx={{ minHeight: "100vh", position: "relative", }}>
       <Box
@@ -49,7 +54,17 @@ export default function MenuDropDown() {
           Create Event
         </Button>
       </Box>
-      <Typography><Link href="/" legacyBehavior><a href="/">Home</a></Link></Typography>
+          <Button sx={{marginTop: 3, marginLeft: 3}} onClick={handleHomeRoute}>Home</Button>
+      <style jsx>{`
+        a {
+          color: #968176;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+       
+      
+      `}</style>
     </Box>
   );
 }
