@@ -1,18 +1,33 @@
 import React from "react";
 import { useRouter } from "next/router";
+import { useSideBar } from "../context/menuContext";
+
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import { useSideBar } from "../context/menuContext";
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
 export default function MenuDropDown() {
-  const router = useRouter()
-    const {toogleSideBar} = useSideBar()
-    const handleHomeRoute = ()=>{
-      router.push("/")
-      toogleSideBar()
-    }
+  const router = useRouter();
+  const { toogleSideBar } = useSideBar();
+  const handleRoute = (url) => {
+    router.push(url);
+    toogleSideBar();
+  };
+
+  const dropDownList = [
+    { title: "Home", url: "/" },
+    { title: "Explore Events", url: "/sign-up" },
+    { title: "Pricing", url: "/login" },
+    { title: "Help", url: "/password-reset"},
+  ];
+
   return (
-    <Box sx={{ minHeight: "100vh", position: "relative", }}>
+    <Box sx={{ minHeight: "100vh", position: "relative", display: "flex", flexDirection: "column", }}>
       <Box
         sx={{
           display: "flex",
@@ -22,7 +37,7 @@ export default function MenuDropDown() {
           padding: "1rem 1rem",
         }}
       >
-        <Avatar sx={{ backgroundColor: "primary.main" }}>E</Avatar>{" "}
+        <Avatar sx={{ backgroundColor: "primary.main", fontWeight: 900 }}>E</Avatar>{" "}
         <IconButton onClick={toogleSideBar}>
           <CloseIcon />
         </IconButton>
@@ -46,15 +61,47 @@ export default function MenuDropDown() {
             backgroundColor: "primary.main",
             color: "grey.50",
             width: "100%",
-            "&:hover": {backgroundColor: "primary.main"}
+            "&:hover": { backgroundColor: "primary.main" },
           }}
           startIcon={<CalendarMonthIcon />}
-          
         >
           Create Event
         </Button>
       </Box>
-          <Button sx={{marginTop: 3, marginLeft: 3}} onClick={handleHomeRoute}>Home</Button>
+
+      {dropDownList.map((item) => {
+        const {title, url} = item
+        return (
+          <Button
+            fullWidth
+            key={url}
+            sx={{
+              marginTop: 3,
+              textTransform: "capitalize",
+              display: "block",
+              textAlign: "left",
+              paddingLeft: 5,
+              color: "grey.800",
+            }}
+            onClick={()=>handleRoute(url)}
+          >
+            {title}
+          </Button>
+        );
+      })}
+      
+      <Box sx={{marginTop: "auto", padding: ".5rem 2.5rem"}}>
+        <Typography variant="subtitle1" sx={{fontWeight: 700, color: "grey.900"}}>Follow Us</Typography>
+        <Box mt={1} mb={3} sx={{display: "flex", columnGap: 2}}>
+          <IconButton sx={{border: "1px solid #968176"}}><FacebookRoundedIcon/></IconButton>
+          <IconButton sx={{border: "1px solid #968176"}}><InstagramIcon/></IconButton>
+          <IconButton sx={{border: "1px solid #968176"}}><TwitterIcon/></IconButton>
+          <IconButton sx={{border: "1px solid #968176"}}><LinkedInIcon/></IconButton>
+          <IconButton sx={{border: "1px solid #968176"}}><YouTubeIcon/></IconButton>
+
+
+        </Box>
+      </Box>
       <style jsx>{`
         a {
           color: #968176;
@@ -62,8 +109,6 @@ export default function MenuDropDown() {
         a:hover {
           text-decoration: underline;
         }
-       
-      
       `}</style>
     </Box>
   );
