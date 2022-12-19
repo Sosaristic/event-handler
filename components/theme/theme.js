@@ -6,13 +6,15 @@ export const theme = createTheme({
             main: "#968176"
         },
         secondary: {
-            main: "#121212"
+            main: "#f5f5f5"
         },
-        neutral: {
-            main: "#1f1f1f"
+        custom: {
+            main: "#fff"
         },
         action: {
-            active: "#968176"
+            active: "#968176",
+            focusOpacity: 0.5,
+
         },
       
     },
@@ -20,7 +22,8 @@ export const theme = createTheme({
         fontFamily: `"Heebo", "Roboto", sans-serif`
 
         
-    }
+    },
+   
 })
 
 //dark: "#0d0d0d",

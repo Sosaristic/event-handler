@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import Head from 'next/head'
-import Image from 'next/image'
+import NavBar from "../components/NavBar"
 
 
 
@@ -15,7 +15,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Typography>landing page</Typography>
+       <header>
+        <nav><NavBar/></nav>
+       </header>
        
       </main>
     </>
