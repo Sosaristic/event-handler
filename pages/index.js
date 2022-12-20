@@ -1,7 +1,8 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Chip, Stack, Container } from "@mui/material";
 import Head from "next/head";
 import CreateEventButton from "../components/CreateEventButton";
 import NavBar from "../components/NavBar";
+import { chipData } from "../components/componentData/data";
 
 export default function Home() {
   return (
@@ -13,39 +14,84 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <header>
-          <nav>
-            <NavBar />
-          </nav>
-        </header>
-        <section>
-          <Box
+        <Box sx={{ backgroundColor: "grey.100" }}>
+          <header>
+            <nav>
+              <NavBar />
+            </nav>
+          </header>
+          <section>
+            <Box
+              sx={{
+                minHeight: "25rem",
+                textAlign: "center",
+                position: "relative",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyItems: "center",
+                backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1812%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(208%2c 213%2c 219%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c217 C 72%2c188 216%2c69 360%2c72 C 504%2c75 576%2c220.8 720%2c232 C 864%2c243.2 936%2c135.8 1080%2c128 C 1224%2c120.2 1368%2c180 1440%2c193L1440 560L0 560z' fill='rgba(193%2c 200%2c 207%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c362 C 96%2c388.6 288%2c509.6 480%2c495 C 672%2c480.4 768%2c298.6 960%2c289 C 1152%2c279.4 1344%2c415.4 1440%2c447L1440 560L0 560z' fill='rgba(212%2c 217%2c 223%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1812'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e")`,
+              }}
+            >
+              <Typography
+                mt={5}
+                variant="h4"
+                sx={{ width: { md: "50%" }, fontWeight: 700 }}
+              >
+                The Easiest and the most powerful Online Event Booking and
+                Ticketing System
+              </Typography>
+              <Typography
+                mt={3}
+                variant="h6"
+                sx={{ width: { md: "40%" }, padding: "0 .5rem" }}
+              >
+                Eventum is an all-in-one event ticketing platform for event
+                organisers, promoters, and managers. Easily create, promote and
+                manage your events of any type and size
+              </Typography>
+              <Box mt={3} pb={5}>
+                <CreateEventButton size="large" />
+              </Box>
+            </Box>
+          </section>
+
+          <Container
+            disableGutters
             sx={{
-              minHeight: "25rem",
-              textAlign: "center",
-              position: "relative",
               display: "flex",
               flexDirection: "column",
-              alignItems: "center",
-              justifyItems: "center",
-              backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1812%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(208%2c 213%2c 219%2c 1)'%3e%3c/rect%3e%3cpath d='M 0%2c217 C 72%2c188 216%2c69 360%2c72 C 504%2c75 576%2c220.8 720%2c232 C 864%2c243.2 936%2c135.8 1080%2c128 C 1224%2c120.2 1368%2c180 1440%2c193L1440 560L0 560z' fill='rgba(193%2c 200%2c 207%2c 1)'%3e%3c/path%3e%3cpath d='M 0%2c362 C 96%2c388.6 288%2c509.6 480%2c495 C 672%2c480.4 768%2c298.6 960%2c289 C 1152%2c279.4 1344%2c415.4 1440%2c447L1440 560L0 560z' fill='rgba(212%2c 217%2c 223%2c 1)'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1812'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e")`,
+              justifyContent: "space-around",
+
+              marginTop: 2,
+              padding: { xs: 1, md: 0 },
             }}
           >
-            <Typography
-              mt={5}
-              variant="h4"
-              sx={{ width: {md: "50%"} , fontWeight: 700, }}
+            <Typography mt={3} variant="h4" sx={{ fontWeight: 700 }}>
+              Explore Events
+            </Typography>
+            <Box
+              mt={4}
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                overflowX: "scroll",
+                "&::-webkit-scrollbar": { display: "none" },
+                msOverflowStyle: "none",
+                scrollbarWidth: "none",
+              }}
             >
-              The Easiest and the most powerful Online Event Booking and
-              Ticketing System
-            </Typography>
-            <Typography mt={3} variant="h6" sx={{width: {md: "40%"}, padding: "0 .5rem"}}>
-              Eventum is an all-in-one event ticketing platform for event
-              organisers, promoters, and managers. Easily create, promote and manage your events of any type and size
-            </Typography>
-            <Box mt={3} pb={5}><CreateEventButton size="large"/></Box>
-          </Box>
-        </section>
+              {chipData.map((item) => {
+                return (
+                  <Chip
+                    label={item.title}
+                    sx={{ backgroundColor: "white", color: "grey.600" }}
+                  />
+                );
+              })}
+            </Box>
+          </Container>
+        </Box>
       </main>
     </>
   );
