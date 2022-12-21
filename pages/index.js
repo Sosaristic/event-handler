@@ -12,21 +12,21 @@ import {
 import Head from "next/head";
 import CreateEventButton from "../components/CreateEventButton";
 import NavBar from "../components/NavBar";
+import EventCard from "../components/EventCard";
 import { chipData, tabsData } from "../components/componentData/data";
 
 export default function Home() {
   const [tabValue, setTabValue] = useState(1);
-  const [chipValue, setChipValue] = useState(1)
-const handleFilter = (id, context)=>{
-  if(context === "tab"){
- setTabValue(id)
-}
-if(context === "chip"){
-  setChipValue(id)
-}
- 
-}
-  
+  const [chipValue, setChipValue] = useState(1);
+  const handleFilter = (id, context) => {
+    if (context === "tab") {
+      setTabValue(id);
+    }
+    if (context === "chip") {
+      setChipValue(id);
+    }
+  };
+
   return (
     <>
       <Head>
@@ -91,6 +91,7 @@ if(context === "chip"){
             <Typography mt={3} variant="h4" sx={{ fontWeight: 700 }}>
               Explore Events
             </Typography>
+
             <Box
               mt={4}
               sx={{
@@ -103,18 +104,23 @@ if(context === "chip"){
               }}
             >
               {chipData.map((item) => {
-                const {title, id} = item
+                const { title, id } = item;
                 return (
                   <Chip
-                  key={id}
+                    key={id}
                     label={title}
-                    sx={{ backgroundColor: `${chipValue === id? "grey.300": "white"}`, color: "grey.900" }}
-                    onClick={()=>handleFilter(id, "chip")}
-
+                    sx={{
+                      backgroundColor: `${
+                        chipValue === id ? "grey.300" : "white"
+                      }`,
+                      color: "grey.900",
+                    }}
+                    onClick={() => handleFilter(id, "chip")}
                   />
                 );
               })}
             </Box>
+
             <Box
               sx={{
                 marginTop: 2,
@@ -128,19 +134,36 @@ if(context === "chip"){
                 const { title, id } = item;
                 return (
                   <Button
-                  key={id}
+                    key={id}
                     sx={{
                       textTransform: "capitalize",
                       backgroundColor: "white",
                       marginLeft: 1,
                       color: "grey.600",
-                      borderBottom: `${tabValue === id && "4px solid #968176"}`
+                      borderBottom: `${tabValue === id && "4px solid #968176"}`,
                     }}
-                    onClick={()=>handleFilter(id, "tab")}
+                    onClick={() => handleFilter(id, "tab")}
                   >
                     {title}
                   </Button>
                 );
+              })}
+            </Box>
+            {/*         displaying cards     */}
+            <Box
+            mt={7}
+              sx={{
+                display: "flex",
+                flexDirection: { xs: "column", md: "row" },
+                flexWrap: "wrap",
+                position: "relative",
+                justifyContent: "space-evenly",
+                columnGap: 2,
+                rowGap: 2,
+              }}
+            >
+              {[...Array(12)].map((item) => {
+                return <EventCard />;
               })}
             </Box>
           </Box>
