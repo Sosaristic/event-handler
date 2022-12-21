@@ -65,11 +65,11 @@ export default function NavBar() {
       return "active";
     }
   };
-  console.log(pathname);
+
   return (
-    <AppBar position="static" color="custom">
+    <AppBar elevation={0} position="fixed" color="custom">
       <Container maxWidth="xl" sx={{ padding: ".5rem 0" }}>
-        <Toolbar variant="dense" sx={{ display: "flex" }}>
+        <Toolbar  sx={{ display: "flex" }}>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <EventLogo avatarBackgroundColor={"primary.main"} />
           </Box>
