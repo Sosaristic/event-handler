@@ -14,6 +14,7 @@ import CreateEventButton from "../components/CreateEventButton";
 import NavBar from "../components/NavBar";
 import EventCard from "../components/EventCard";
 import { chipData, tabsData } from "../components/componentData/data";
+import Footer from "../components/Footer";
 
 export default function Home() {
   const [tabValue, setTabValue] = useState(1);
@@ -44,6 +45,7 @@ export default function Home() {
           </header>
           <section>
             <Box
+              mt={8}
               sx={{
                 minHeight: "25rem",
                 textAlign: "center",
@@ -93,7 +95,7 @@ export default function Home() {
             </Typography>
 
             <Box
-              mt={4}
+              mt={5}
               sx={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -123,7 +125,7 @@ export default function Home() {
 
             <Box
               sx={{
-                marginTop: 2,
+                marginTop: 4,
                 display: "flex",
                 flexWrap: "wrap",
                 width: { md: "80%" },
@@ -151,7 +153,7 @@ export default function Home() {
             </Box>
             {/*         displaying cards     */}
             <Box
-            mt={7}
+              mt={7}
               sx={{
                 display: "flex",
                 flexDirection: { xs: "column", md: "row" },
@@ -166,8 +168,23 @@ export default function Home() {
                 return <EventCard />;
               })}
             </Box>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                textTransform: "capitalize",
+                width: "fit-content",
+                alignSelf: "center",
+                marginTop: 3,
+                marginBottom: 3,
+              }}
+            >
+              Browse All
+            </Button>
           </Box>
         </Box>
+
+        <Footer/>
       </main>
     </>
   );
