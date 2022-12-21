@@ -1,10 +1,32 @@
-import { Typography, Box, Chip, Stack, Container } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Typography,
+  Box,
+  Chip,
+  Stack,
+  Container,
+  Tabs,
+  Tab,
+  Button,
+} from "@mui/material";
 import Head from "next/head";
 import CreateEventButton from "../components/CreateEventButton";
 import NavBar from "../components/NavBar";
-import { chipData } from "../components/componentData/data";
+import { chipData, tabsData } from "../components/componentData/data";
 
 export default function Home() {
+  const [tabValue, setTabValue] = useState(1);
+  const [chipValue, setChipValue] = useState(1)
+const handleFilter = (id, context)=>{
+  if(context === "tab"){
+ setTabValue(id)
+}
+if(context === "chip"){
+  setChipValue(id)
+}
+ 
+}
+  
   return (
     <>
       <Head>
@@ -56,15 +78,14 @@ export default function Home() {
             </Box>
           </section>
 
-          <Container
-            disableGutters
+          <Box
             sx={{
               display: "flex",
               flexDirection: "column",
               justifyContent: "space-around",
-
+              position: "relative",
               marginTop: 2,
-              padding: { xs: 1, md: 0 },
+              padding: { xs: 1, md: "0 3rem" },
             }}
           >
             <Typography mt={3} variant="h4" sx={{ fontWeight: 700 }}>
@@ -82,15 +103,47 @@ export default function Home() {
               }}
             >
               {chipData.map((item) => {
+                const {title, id} = item
                 return (
                   <Chip
-                    label={item.title}
-                    sx={{ backgroundColor: "white", color: "grey.600" }}
+                  key={id}
+                    label={title}
+                    sx={{ backgroundColor: `${chipValue === id? "grey.300": "white"}`, color: "grey.900" }}
+                    onClick={()=>handleFilter(id, "chip")}
+
                   />
                 );
               })}
             </Box>
-          </Container>
+            <Box
+              sx={{
+                marginTop: 2,
+                display: "flex",
+                flexWrap: "wrap",
+                width: { md: "80%" },
+                rowGap: 1,
+              }}
+            >
+              {tabsData.map((item) => {
+                const { title, id } = item;
+                return (
+                  <Button
+                  key={id}
+                    sx={{
+                      textTransform: "capitalize",
+                      backgroundColor: "white",
+                      marginLeft: 1,
+                      color: "grey.600",
+                      borderBottom: `${tabValue === id && "4px solid #968176"}`
+                    }}
+                    onClick={()=>handleFilter(id, "tab")}
+                  >
+                    {title}
+                  </Button>
+                );
+              })}
+            </Box>
+          </Box>
         </Box>
       </main>
     </>
