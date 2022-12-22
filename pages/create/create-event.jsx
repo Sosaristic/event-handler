@@ -1,4 +1,6 @@
 import React from "react";
+import Head from "next/head"
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 import {
@@ -14,16 +16,19 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-import Layout from "../components/Layout";
-import Breadcrumb from "../components/Breadcrumb";
+import Layout from "../../components/Layout";
+import Breadcrumb from "../../components/Breadcrumb"
 
 export default function CreateEvent() {
   const router = useRouter();
   console.log(router);
   return (
     <Layout>
+      <Head>
+        <title>Create Event</title>
+      </Head>
       <Box
-        mt={10}
+        
         sx={{
           minHeight: "80vh",
           display: "flex",
@@ -32,7 +37,10 @@ export default function CreateEvent() {
         }}
       >
         <Box sx={{ height: "20%" }}>
-          <Breadcrumb />
+          <Breadcrumb>
+          <Link href="/" legacyBehavior><a href="/">Home</a></Link>
+          <Typography>Create</Typography>
+          </Breadcrumb>
         </Box>
         <Box
           sx={{
@@ -82,6 +90,7 @@ export default function CreateEvent() {
                 variant="contained"
                 size="large"
                 endIcon={<ArrowForwardIcon />}
+                onClick={()=>router.push("/create/create-event-details")}
               >
                 Create
               </Button>

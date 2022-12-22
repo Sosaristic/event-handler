@@ -4,12 +4,12 @@ import { useSideBar } from "../context/menuContext";
 
 import { Avatar, Box, Button, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import CreateEventButton from "./CreateEventButton";
 
 export default function MenuDropDown() {
   const router = useRouter();
@@ -54,19 +54,7 @@ export default function MenuDropDown() {
           padding: "0 2rem",
         }}
       >
-        <Button
-          size="large"
-          color="secondary"
-          sx={{
-            backgroundColor: "primary.main",
-            color: "grey.50",
-            width: "100%",
-            "&:hover": { backgroundColor: "primary.main" },
-          }}
-          startIcon={<CalendarMonthIcon />}
-        >
-          Create Event
-        </Button>
+       <CreateEventButton />
       </Box>
 
       {dropDownList.map((item) => {

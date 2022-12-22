@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { Box, Breadcrumbs, Typography } from "@mui/material";
 
-export default function Breadcrumb({ url }) {
+export default function Breadcrumb({children}) {
   return (
     <Box
     
@@ -18,10 +18,7 @@ export default function Breadcrumb({ url }) {
       }}
     >
       <Breadcrumbs aria-label="breadcrumb" sx={{marginLeft: "10%"}}>
-        <Link href="/" legacyBehavior>
-          <a href="/">Home</a>
-        </Link>
-       <Typography>Create Event</Typography>
+        {children}
       </Breadcrumbs>
 
       <style jsx>{`

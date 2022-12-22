@@ -44,7 +44,7 @@ export default function Home() {
           
           <section>
             <Box
-              mt={8}
+              
               sx={{
                 minHeight: "25rem",
                 textAlign: "center",
@@ -160,8 +160,8 @@ export default function Home() {
                gap: 3,
               }}
             >
-              {[...Array(12)].map((item) => {
-                return <EventCard />;
+              {[...Array(12)].map((item, id) => {
+                return <EventCard  key={id}/>;
               })}
             </Box>
             <Button
