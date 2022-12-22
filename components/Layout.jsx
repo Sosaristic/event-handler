@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 export default function Layout({children}) {
   return (
-    <div>
+    <div style={{position: "relative", backgroundColor: "#f5f5f5"}}>
         <NavBar />
         {children}
         <Footer />

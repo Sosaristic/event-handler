@@ -10,7 +10,7 @@ import AccessTimeOutlinedIcon from "@mui/icons-material/AccessTimeOutlined";
 
 export default function ActionAreaCard() {
   return (
-    <Card sx={{ flexBasis: "24%" }} elevation={0}>
+    <Card sx={{ flexBasis: {xs: "95%", sm: "45%", md: "30%", lg: "21%"} }} elevation={0}>
       <CardActionArea sx={{ borderRadius: 5 }}>
         <CardMedia
           component="img"

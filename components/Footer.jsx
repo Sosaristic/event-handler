@@ -103,7 +103,7 @@ export default function Footer() {
       </Grid>
       <style jsx>{`
         a {
-          color: white;
+          color: #757575;
         }
         a:hover {
             color: white;

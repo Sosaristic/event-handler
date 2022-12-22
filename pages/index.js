@@ -155,12 +155,9 @@ export default function Home() {
               mt={7}
               sx={{
                 display: "flex",
-                flexDirection: { xs: "column", md: "row" },
-                flexWrap: "wrap",
-                position: "relative",
-                justifyContent: "space-evenly",
-                columnGap: 2,
-                rowGap: 2,
+               flexWrap: "wrap",
+               justifyContent: "center",
+               gap: 3,
               }}
             >
               {[...Array(12)].map((item) => {

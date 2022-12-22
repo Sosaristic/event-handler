@@ -10,7 +10,6 @@ import {
   Drawer,
   Avatar,
   Menu,
-  Button,
 } from "@mui/material";
 
 import MenuIcon from "@mui/icons-material/Menu";
@@ -19,6 +18,7 @@ import MenuDropDown from "./MenuDropDown";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 
 import { useSideBar } from "../context/menuContext";
 import ProfileDropDown from "./ProfileDropDown";
@@ -67,112 +67,127 @@ export default function NavBar() {
   };
 
   return (
-    <AppBar elevation={0} position="fixed" color="custom">
-      <Container maxWidth="xl" sx={{ padding: ".5rem 0" }}>
-        <Toolbar  sx={{ display: "flex" }}>
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <EventLogo avatarBackgroundColor={"primary.main"} />
-          </Box>
-
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton onClick={toogleSideBar}>
-              <MenuIcon />
-            </IconButton>
-            {windowSize <= 900 && (
-              <Drawer
-                open={sideBar}
-                onClose={toogleSideBar}
-                anchor="top"
-                transitionDuration={500}
-              >
-                <MenuDropDown />
-              </Drawer>
-            )}
-          </Box>
-
-          <Box ml={2} sx={{ display: { xs: "block", md: "none" } }}>
-            <Avatar sx={{ backgroundColor: "primary.main", fontWeight: 700 }}>
-              E
-            </Avatar>
-          </Box>
-          {/*     nav list         */}
-          <Box
-            sx={{
-              display: { xs: "none", md: "flex" },
-              width: "30%",
-
-              marginLeft: "auto",
-              columnGap: 3,
-            }}
-          >
-            {navList.map((item) => {
-              const { title, url } = item;
-              return (
-                <Box
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    width: "fit-content",
-                    flexShrink: 0,
-                  }}
-                  key={url}
-                >
-                  <Link href={url} legacyBehavior>
-                    <a
-                      href={url}
-                      style={{ color: `${activeLink(url) ? "#968176" : null}` }}
-                    >
-                      {title}
-                    </a>
-                  </Link>
-                </Box>
-              );
-            })}
-          </Box>
-
-          <Box sx={{ marginLeft: "auto", display: { xs: "none", md: "flex" } }}>
-            {" "}
-            <CreateEventButton size="small"/>
-          </Box>
-
-          {/*   user profile */}
-          <Box
-            sx={{ marginLeft: "auto", display: "flex" }}
-            onClick={handleClick}
-          >
-            <Avatar
-              src="/images/Anderson.png"
-              sx={{ height: "2rem", width: "2rem" }}
-            ></Avatar>
-            <ArrowDropDownIcon />
-          </Box>
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-            sx={{ marginTop: "1rem", "&:hover": { backgroundColor: "none" } }}
-          >
-            <Box disableRipple={true}>
-              <ProfileDropDown />
+    <header>
+      <AppBar elevation={0} position="fixed" color="custom">
+        <Container maxWidth="xl" sx={{ padding: ".5rem 0" }}>
+          <Toolbar sx={{ display: "flex" }}>
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <EventLogo avatarBackgroundColor={"primary.main"} />
             </Box>
-          </Menu>
-          <Box ml={2} sx={{ backgroundColor: "grey.100", borderRadius: "50%" }}>
-            <IconButton color="grey.50" onClick={handleDarkMode}>
-              {darkMode ? <DarkModeIcon /> : <Brightness7Icon />}
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </Container>
-      <style jsx>{`
-        a {
-          font-size: 1rem;
-          font-weight: 500;
-        }
-      `}</style>
-    </AppBar>
+
+            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+              <IconButton onClick={toogleSideBar}>
+                <MenuIcon />
+              </IconButton>
+              {windowSize <= 900 && (
+                <Drawer
+                  open={sideBar}
+                  onClose={toogleSideBar}
+                  anchor="top"
+                  transitionDuration={500}
+                >
+                  <MenuDropDown />
+                </Drawer>
+              )}
+            </Box>
+
+            <Box ml={2} sx={{ display: { xs: "block", md: "none" } }}>
+              <Avatar sx={{ backgroundColor: "primary.main", fontWeight: 700 }}>
+                E
+              </Avatar>
+            </Box>
+            {/*     nav list         */}
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                width: "30%",
+
+                marginLeft: "auto",
+                columnGap: 3,
+              }}
+            >
+              {navList.map((item) => {
+                const { title, url } = item;
+                return (
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      width: "fit-content",
+                      flexShrink: 0,
+                    }}
+                    key={url}
+                  >
+                    <Link href={url} legacyBehavior>
+                      <a
+                        href={url}
+                        style={{
+                          color: `${activeLink(url) ? "#968176" : null}`,
+                        }}
+                      >
+                        {title}
+                      </a>
+                    </Link>
+                  </Box>
+                );
+              })}
+            </Box>
+
+            <Box
+              sx={{ marginLeft: {sm: 12, lg: "auto"}, display: { xs: "none", sm: "flex", md: "flex" } }}
+            >
+             
+              
+              { windowSize >=1020 ? <CreateEventButton size="large"/> 
+              : windowSize < 1020 && windowSize > 895 ? <CalendarMonthIcon />
+              : windowSize <= 895 ? <CreateEventButton size="large"/>
+              : null
+            }
+
+            </Box>
+
+            {/*   user profile */}
+            <Box
+              sx={{ marginLeft: "auto", display: "flex" }}
+              onClick={handleClick}
+            >
+              <Avatar
+                src="/images/Anderson.png"
+                sx={{ height: "2rem", width: "2rem" }}
+              ></Avatar>
+              <ArrowDropDownIcon />
+            </Box>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              sx={{ marginTop: "1rem", "&:hover": { backgroundColor: "none" } }}
+            >
+              <Box disableRipple={true}>
+                <ProfileDropDown />
+              </Box>
+            </Menu>
+            <Box
+              ml={2}
+              sx={{ backgroundColor: "grey.100", borderRadius: "50%" }}
+            >
+              <IconButton color="grey.50" onClick={handleDarkMode}>
+                {darkMode ? <DarkModeIcon /> : <Brightness7Icon />}
+              </IconButton>
+            </Box>
+          </Toolbar>
+        </Container>
+        <style jsx>{`
+          a {
+            font-size: 1rem;
+            font-weight: 500;
+          }
+        `}</style>
+      </AppBar>
+    </header>
   );
 }
