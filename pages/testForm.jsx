@@ -40,19 +40,26 @@
 // }
 
 import { useForm, Controller } from "react-hook-form";
-import { Input, Box, TextField } from "@mui/material";
+import { Input, Box, TextField, MenuItem } from "@mui/material";
+import Layout from "../components/Layout";
+import { durationFormat } from "../components/componentData/data";
+import NavBar from "../components/TestNav";
+import Home from "../components/TextEditor";
 
 export default function testForm() {
   const { register, handleSubmit, control, formState: {errors} } = useForm({
     defaultValues: {
         firstName: "",
-        number: ""
+        number: "",
+        eventDurationFormat: "Hours",
     }
   });
   const onSubmit = (data) => console.log(data);
   console.log(errors);
 
   return (
+    <Box>
+      <NavBar />
     <Box component="form" onSubmit={handleSubmit(onSubmit)}>
       <Controller
         name="firstName"
@@ -97,8 +104,32 @@ export default function testForm() {
         )}
       />
      
-
+     <Controller
+              name="eventDurationFormat"
+              control={control}
+              rules={{ required: "Event category is required" }}
+              render={({ field }) => (
+                <TextField
+                  variant="filled"
+                  select
+                  autoComplete="off"
+                  {...field}
+                  label="format"
+                  error={Boolean(errors.eventDurationFormat)}
+                  helperText={errors.eventDurationFormat?.message}
+               
+                >
+                  {durationFormat.map((option) => (
+                    <MenuItem key={option} value={option} >
+                      {option}
+                    </MenuItem>
+                  ))}
+                </TextField>
+              )}
+            />
+            <Home />
       <input type="submit" />
+    </Box>
     </Box>
   );
 }

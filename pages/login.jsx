@@ -148,7 +148,7 @@ export default function login() {
                       required: "required",
                       pattern: {
                         value:
-                          /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[\.]+[com || org]+$/i,
+                          /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[\.]+[a-zA-Z.]+$/i,
                         message: "invalid email",
                       },
                     }}

@@ -21,27 +21,27 @@ import Breadcrumb from "../../components/Breadcrumb"
 
 export default function CreateEvent() {
   const router = useRouter();
-  console.log(router);
+  
   return (
     <Layout>
       <Head>
         <title>Create Event</title>
       </Head>
       <Box
-        
+        pb={1}
         sx={{
-          minHeight: "80vh",
+          minHeight: "70vh",
           display: "flex",
           flexDirection: "column",
-          position: "relative",
+          
         }}
       >
-        <Box sx={{ height: "20%" }}>
+       
           <Breadcrumb>
           <Link href="/" legacyBehavior><a href="/">Home</a></Link>
           <Typography>Create</Typography>
           </Breadcrumb>
-        </Box>
+       
         <Box
           sx={{
             height: "80%",
@@ -61,16 +61,18 @@ export default function CreateEvent() {
             Create New Event
           </Typography>
           <Divider variant="middle" sx={{ margin: "1.5rem 0" }} />
+          <Box sx={{position: "relative", display: "flex", alignSelf: "center", }}>
           <Card
             sx={{
               minWidth: 100,
-              alignSelf: "center",
-              padding: "1rem 1.5rem",
-              marginTop: "3rem",
+              
+              
+
+            
             }}
           >
-            <CardContent sx={{ display: "flex", flexDirection: "column" }}>
-              <Box sx={{ alignSelf: "center", marginTop: 1 }}>
+            <CardContent sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+              <Box sx={{  marginTop: 1, display: "flex", alignItems: "center", }}>
                 <Avatar>
                   <LocationOnIcon />
                 </Avatar>
@@ -96,6 +98,7 @@ export default function CreateEvent() {
               </Button>
             </CardActions>
           </Card>
+          </Box>
         </Box>
       </Box>
     </Layout>

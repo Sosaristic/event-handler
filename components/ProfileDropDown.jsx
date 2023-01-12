@@ -5,11 +5,14 @@ export default function ProfileDropDown() {
   const profileLinks = ["My Organisation", "My Profile", "Sign Out"];
   return (
     <Box
+    px={2}
       sx={{
         display: "flex",
         flexDirection: "column",
-        width: "14rem",
-        alignItems: "center",
+        width: "100%",
+        alignItems: "center"
+        
+        
       }}
     >
       <Box
@@ -44,11 +47,12 @@ export default function ProfileDropDown() {
       {profileLinks.map((item) => {
         return (
           <Button
+          key={item}
             sx={{
               alignSelf: "flex-start",
               color: "grey.900",
               textTransform: "capitalize",
-              marginLeft: 1,
+              
             }}
           >
             {item}

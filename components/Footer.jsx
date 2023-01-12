@@ -97,7 +97,7 @@ export default function Footer() {
           sx={{ display: "flex", color: "grey.600", justifyContent: "center",}}
         >
           <Typography variant="body2">
-            &copy; {year} Music360. All rights reserved
+            &copy; {year} Eventum. All rights reserved
           </Typography>
         </Grid>
       </Grid>

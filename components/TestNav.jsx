@@ -18,6 +18,7 @@ import ProfileDropDown from "./ProfileDropDown";
 import CreateEventButton from "./CreateEventButton";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Link from "next/link";
 import MenuDropDown from "./MenuDropDown";
 import { Drawer } from "@mui/material";
@@ -36,7 +37,7 @@ function ResponsiveAppBar() {
 
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [darkMode, setDarkMode] = useState(false);
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
 
   useEffect(() => {
     setWindowSize(window.innerWidth)
@@ -79,7 +80,7 @@ function ResponsiveAppBar() {
             <EventLogo avatarBackgroundColor={"primary.main"} />
           </Box>
 
-          <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 3 }}>
+          <Box sx={{ display: { xs: "flex", md: "none" }, flexGrow: 1 }}>
               <IconButton onClick={toogleSideBar}>
                 <MenuIcon />
               </IconButton>
@@ -130,8 +131,8 @@ function ResponsiveAppBar() {
                 );
               })}
           </Box>
-          <Box sx={{ flexGrow: 1, display: {xs: "none", sm: "flex"} }}>
-            <CreateEventButton /> 
+          <Box sx={{ flexGrow: 1 }}>
+           {windowSize <= 345? <CalendarMonthIcon color= "primary"/> : <CreateEventButton />} 
           </Box>
 
           <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>

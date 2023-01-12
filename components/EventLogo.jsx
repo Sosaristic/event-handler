@@ -17,7 +17,7 @@ export default function EventLogo({backgroundColor, color, avatarColor, avatarBa
       sx={{
         backgroundColor: `${avatarBackgroundColor && avatarBackgroundColor}` ,
         color: `${avatarColor && avatarColor}` ,
-        fontWeight: "bold",
+        fontWeight: 900,
       }}
     >
       E

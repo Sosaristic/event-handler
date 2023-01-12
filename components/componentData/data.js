@@ -24,3 +24,39 @@ export const tabsData = [
   { title: "Sports", id: 9 },
   { title: "Free", id: 10 },
 ];
+
+export const categories = [
+    "Arts",
+    "Business",
+    "coaching and Consulting",
+    "Community and Culture",
+    "Entrepreneurship",
+    "Education and Training",
+    "Family and Friends",
+    "Fashion and Beauty",
+    "Film and Entertainment",
+    "Food and Drinks",
+    "Government and Politics",
+    "Health and Wellbeing",
+    "Music and Theater",
+    "Religion and Spirituality",
+    "Science and Technology",
+    "Sports and Fitness",
+    "Travel and Outdoor",
+    "Visual Arts",
+    "Others"    
+  ];
+
+ export const durationFormat = ["mins", "hours", "days"]
+
+ export const events = [
+  {id: 1, title: "Earrings Workshop with Bronwyn David", imgUrl: "/images/test-image-1.jpg"},
+  {id: 2, title: "spring showcase", imgUrl: "/images/test-image-1.jpg"},
+  {id: 3, title: "tutorial for canvas painting for beginners", imgUrl: "/images/test-image-1.jpg"},
+  {id: 4, title: "Trainee program for leadership", imgUrl: "/images/test-image-1.jpg"},
+  {id: 5, title: "Step up open mic show", imgUrl: "/images/test-image-1.jpg"},
+  {id: 6, title: "Earrings Workshop with Bronwyn David", imgUrl: "/images/test-image-1.jpg"},
+  {id: 7, title: "tutorial for canvas painting for beginners", imgUrl: "/images/test-image-1.jpg"},
+  {id: 8, title: "Earrings Workshop with Bronwyn David", imgUrl: "/images/test-image-1.jpg"},
+]
+
