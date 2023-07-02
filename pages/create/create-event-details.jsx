@@ -3,7 +3,6 @@ import { Box, Container, Step, StepLabel, Stepper, Typography } from "@mui/mater
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import Breadcrumb from "../../components/Breadcrumb";
-import Layout from "../../components/Layout";
 import CreateEventStep1 from "../../components/create event components/CreateEventStep1";
 const CreateEventStep2 = dynamic(() =>
   import("../../components/create event components/CreateEventStep2")
@@ -62,7 +61,7 @@ export default function CreateEventDetails() {
   };
 
   return (
-    <Layout>
+    <section>
       <Box
         sx={{
           minHeight: "80vh",
@@ -179,6 +178,6 @@ export default function CreateEventDetails() {
           />
         </Box>
       </Box>
-    </Layout>
+      </section>
   );
 }

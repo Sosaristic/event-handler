@@ -255,6 +255,7 @@ export default function login() {
                     transform: "translate(-50%, 0)",
                     display: { xs: "flex", sm: "none" },
                     textAlign: "center",
+                    fontSize: {xs: ".8rem", sm: "1rem"}
                   }}
                 >
                   Already have an account?

@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Layout from "../../components/Layout";
+import Layout from "../../components/Layout/Layout";
 import Breadcrumb from "../../components/Breadcrumb";
 import {
   Box,
@@ -90,7 +90,7 @@ export default function Product() {
 
   console.log(data);
   return (
-    <Layout>
+    <>
       <Breadcrumb>
         <Link href="/" legacyBehavior>
           <a href="/">Home</a>
@@ -222,6 +222,6 @@ export default function Product() {
           text-decoration: underline;
         }
       `}</style>
-    </Layout>
+    </>
   );
 }

@@ -16,14 +16,13 @@ import {
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
-import Layout from "../../components/Layout";
 import Breadcrumb from "../../components/Breadcrumb"
 
 export default function CreateEvent() {
   const router = useRouter();
   
   return (
-    <Layout>
+    <section>
       <Head>
         <title>Create Event</title>
       </Head>
@@ -101,6 +100,6 @@ export default function CreateEvent() {
           </Box>
         </Box>
       </Box>
-    </Layout>
+      </section>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useSideBar } from "../context/menuContext";
+import { useSideBar } from "../../context/menuContext";
 
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,9 +13,9 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-import EventLogo from "./EventLogo";
+import EventLogo from "../EventLogo";
 import ProfileDropDown from "./ProfileDropDown";
-import CreateEventButton from "./CreateEventButton";
+import CreateEventButton from "../CreateEventButton";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Link from "next/link";
